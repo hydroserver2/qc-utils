@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { formatDate, formatDuration, shiftDatetime, TimeUnit } from '../plotting/observationRecord'
+import { TimeUnit } from '@/types'
+import { formatDate, formatDuration, shiftDatetime } from '../format'
 
 describe('Format', () => {
   it('formats date', () => {

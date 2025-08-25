@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { measureEllapsedTime } from '../plotting/observationRecord'
+import { measureEllapsedTime } from '../ellapsed-time'
 
 const duration = 1000
 const doSomething = () => {

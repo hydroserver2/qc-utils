@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { findFirstGreaterOrEqual, findLastLessOrEqual, subtractHours } from '../plotting/observationRecord'
+import { findFirstGreaterOrEqual, findLastLessOrEqual, subtractHours } from '../observations'
 
 // import { DataArray, Datastream } from '@/types'
 

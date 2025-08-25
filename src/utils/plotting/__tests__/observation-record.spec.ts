@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { mockDatastream } from './mock'
-import { ObservationRecord } from '../observationRecord'
+import { ObservationRecord } from '../observation-record'
 import { EnumEditOperations, Operator } from '@/types';
 
 /** Generates `amount` distinct numbers from `min` to `max`. Returns a sorted array. */
