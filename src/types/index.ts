@@ -28,6 +28,7 @@ export enum EnumEditOperations {
 export enum EnumFilterOperations {
   FIND_GAPS = 'FIND_GAPS',
   PERSISTENCE = 'PERSISTENCE',
+  CHANGE = 'CHANGE',
   RATE_OF_CHANGE = 'RATE_OF_CHANGE',
   VALUE_THRESHOLD = 'VALUE_THRESHOLD',
 }
@@ -77,7 +78,7 @@ export enum Operator {
   ASSIGN = 'ASSIGN',
 }
 
-export enum RateOfChangeOperation {
+export enum LogicalOperation {
   LT = 'Less than',
   LTE = 'Less than or equal to',
   GT = 'Greater than',
@@ -85,23 +86,23 @@ export enum RateOfChangeOperation {
   E = 'Equal',
 }
 
-export const RateOfChangeComparator: EnumDictionary<
-  RateOfChangeOperation,
+export const LogicalComparator: EnumDictionary<
+  LogicalOperation,
   (value: number, toCompare: number) => boolean
 > = {
-  [RateOfChangeOperation.LT]: (value: number, toCompare: number) => {
+  [LogicalOperation.LT]: (value: number, toCompare: number) => {
     return value < toCompare
   },
-  [RateOfChangeOperation.LTE]: (value: number, toCompare: number) => {
+  [LogicalOperation.LTE]: (value: number, toCompare: number) => {
     return value <= toCompare
   },
-  [RateOfChangeOperation.GT]: (value: number, toCompare: number) => {
+  [LogicalOperation.GT]: (value: number, toCompare: number) => {
     return value > toCompare
   },
-  [RateOfChangeOperation.GTE]: (value: number, toCompare: number) => {
+  [LogicalOperation.GTE]: (value: number, toCompare: number) => {
     return value >= toCompare
   },
-  [RateOfChangeOperation.E]: (value: number, toCompare: number) => {
+  [LogicalOperation.E]: (value: number, toCompare: number) => {
     return value == toCompare
   },
 }

@@ -1,5 +1,5 @@
 
-import { EnumDictionary, EnumEditOperations, EnumFilterOperations, FilterOperation, FilterOperationFn, HistoryItem, Operator, RateOfChangeComparator, RateOfChangeOperation, TimeUnit } from '../../types'
+import { EnumDictionary, EnumEditOperations, EnumFilterOperations, FilterOperation, FilterOperationFn, HistoryItem, LogicalComparator, LogicalOperation, Operator, TimeUnit } from '../../types'
 import { measureEllapsedTime } from '../ellapsed-time'
 import { shiftDatetime, timeUnitMultipliers } from '../format'
 import { findFirstGreaterOrEqual, findLastLessOrEqual } from '../observations'
@@ -307,6 +307,7 @@ export class ObservationRecord {
       [EnumFilterOperations.FIND_GAPS]: this._findGaps,
       [EnumFilterOperations.VALUE_THRESHOLD]: this._valueThreshold,
       [EnumFilterOperations.PERSISTENCE]: this._persistence,
+      [EnumFilterOperations.CHANGE]: this._change,
       [EnumFilterOperations.RATE_OF_CHANGE]: this._rateOfChange,
     }
     let response = []
@@ -725,8 +726,35 @@ export class ObservationRecord {
       const rate = (curr - prev) / Math.abs(prev)
 
       if (
-        RateOfChangeComparator[comparator as RateOfChangeOperation]?.(
+        LogicalComparator[comparator as LogicalOperation]?.(
           rate,
+          value
+        )
+      ) {
+        selection.push(i)
+      }
+    }
+    return selection
+  }
+
+  /**
+ *
+ * @param comparator
+ * @param value
+ * @returns
+ */
+  private _change(comparator: string, value: number) {
+    const selection: number[] = []
+    const dataY = this.dataset.source.y
+
+    for (let i = 0 + 1; i < dataY.length; i++) {
+      const prev = dataY[i - 1]
+      const curr = dataY[i]
+      const change = (curr - prev)
+
+      if (
+        LogicalComparator[comparator as LogicalOperation]?.(
+          change,
           value
         )
       ) {
