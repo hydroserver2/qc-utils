@@ -51,7 +51,7 @@
     "stylelint": "^16.20.0",
     "taze": "^19.1.0",
     "typescript": "latest",
-    "vitest": "^3.2.4",
+    "vitest": "^4.0.1",
     "vue-tsc": "^3.0.5"
   }
 }
