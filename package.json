@@ -48,7 +48,7 @@
     "eslint-plugin-prettier": "^5.4.1",
     "rimraf": "^6.0.1",
     "rollup-plugin-visualizer": "^6.0.3",
-    "stylelint": "^16.20.0",
+    "stylelint": "^17.0.0",
     "taze": "^19.1.0",
     "typescript": "latest",
     "vitest": "^4.0.1",
