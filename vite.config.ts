@@ -1,21 +1,21 @@
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import { resolve } from "path";
+import { defineConfig } from "vite";
 // import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig(({ mode }) => {
-  const isProd = mode === 'prod';
-  const isDev = mode === 'dev';
-  const isTest = mode === 'test';
+  const isProd = mode === "prod";
+  const isDev = mode === "dev";
+  const isTest = mode === "test";
 
   // TODO: get build to emit types
-  
+
   let build = {};
   if (isProd) {
     build = {
       lib: {
-        entry: resolve(__dirname, 'src/index.ts'),
-        name: '@uwrl/qc-utils',
-        fileName: 'index',
+        entry: resolve(__dirname, "src/index.ts"),
+        name: "@uwrl/qc-utils",
+        fileName: "index",
       },
       // sourcemap: true,
       rollupOptions: {
@@ -57,9 +57,9 @@ export default defineConfig(({ mode }) => {
      * vitest config
      */
     test = {
-      include: ['test/**/*.test.ts'],
+      include: ["test/**/*.test.ts"],
       coverage: {
-        reporter: ['text', 'text-summary', 'lcov'],
+        reporter: ["text", "text-summary", "lcov"],
       },
     };
   }
@@ -79,8 +79,8 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: [
         {
-          find: '@',
-          replacement: resolve(__dirname, './src'),
+          find: "@",
+          replacement: resolve(__dirname, "./src"),
         },
       ],
     },
